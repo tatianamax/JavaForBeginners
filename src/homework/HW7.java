@@ -1,6 +1,7 @@
 package homework;
 
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class HW7 {
@@ -29,12 +30,12 @@ public class HW7 {
     }
 
 
-    public static void verifyEquals(int expectResult, int actualResult) {
-        if (expectResult == actualResult) {
-            System.out.println("Pass");
-        } else {
-            System.out.println("Fail");
-        }
+    public static void verifyEquals(double expectResult, String actualResult) {
+//        if (expectResult == actualResult) {
+//            System.out.println("Pass");
+//        } else {
+//            System.out.println("Fail");
+//        }
 
 
     }
@@ -42,33 +43,38 @@ public class HW7 {
 //    21.	Создать метод, который принимает на вход массив int,
 //        и возвращает минимальное значение, максимальное значение и среднее значение всех чисел массива.
 
-    public static void Array(int[] array) {
-        int minNum = 0;
-        int i;
-        for (i = 0; i < array.length; i++) {
-            if (minNum == 0) {
-                System.out.println("Минимальное число = " + minNum);
+    public static int[] Array(int[] array) {
+        int minNum = Integer.MAX_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            if (minNum > array[i]) {
+                minNum = array[i];
             }
-
-            int maxNum = array[i];
-            if (i > maxNum) {
-                maxNum = i;
-
-            }
-            System.out.println("Максимальное число = " + maxNum);
-
-            double averageNum =0;
-            double sum = 0;
-            if (averageNum < array.length) {
-                sum += array[i];
-                averageNum = sum / array.length;
-                System.out.println("Среднее число = " + averageNum);
-
-            }
-
         }
 
+        int maxNum = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            if (maxNum > array[i]) {
+                maxNum = array[i];
+            }
+        }
+
+        int averageNum = 0;
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum = sum + array[i];
+        }
+        averageNum = sum / array.length;
+
+        int[] result = new int[3];
+        result[0] = minNum;
+        result[1] = maxNum;
+        result[2] = averageNum;
+
+        return result;
+
     }
+
+
 
 
         public static void main (String[]args){
@@ -87,8 +93,10 @@ public class HW7 {
             catsNames[4] = "Муська";
             catsNames[5] = "Васька";
             catsNames[6] = "Клементина";
+            for(int i =0; i<7; i++) {
 
-            System.out.println(catsNames);
+                System.out.println(catsNames[i]);
+            }
 
             printTaskNumber();
 
@@ -101,6 +109,7 @@ public class HW7 {
             if (catsNames[1] != "Черныш") {
                 System.out.println(catsNames[1] = "Черныш");
             }
+
 
             printTaskNumber();
 
@@ -118,7 +127,10 @@ public class HW7 {
             catsColors[6] = "brown"; // коричневый
             catsColors[7] = "spotted";// пятнистый
 
-            System.out.println(catsColors);
+            for(int i =0; i<8; i++) {
+
+                System.out.println(catsColors[i]);
+            }
 
             printTaskNumber();
 
@@ -134,8 +146,10 @@ public class HW7 {
             catsAges[5] = 6;
             catsAges[6] = 7;
             catsAges[7] = 8;
+            for(int i = 0; i < 8; i++) {
 
-            System.out.println(catsAges);
+                System.out.println(catsAges[i]);
+            }
 
             printTaskNumber();
 
@@ -143,7 +157,7 @@ public class HW7 {
 
             boolean[] isCatRed = new boolean[8];
             for (int i = 0; i < catsColors.length; i++) {
-                if (catsColors[i].equals("Red")) {
+                if (catsColors[i].equals("ginger")) {
                     isCatRed[i] = true;
                 } else {
                     isCatRed[i] = false;
@@ -198,7 +212,7 @@ public class HW7 {
 //        7.	Распечатать “Накорми кота!” для всех серых котов
 
             for (int i = 0; i < 8; i++) {
-                if (catsColors[i] == "grey") {
+                if (catsColors[i].equals("grey") ) {
                     System.out.println(catsColors[i] + "-" + "Накорми кота!");
                 }
             }
@@ -207,9 +221,13 @@ public class HW7 {
 
 //        8.	Распечатать “Отнеси кота на прививку!”, если возраст кота меньше 2 лет
 
-            for (int i = 0; i < 2; i++) {
-                if (catsAges[i] < 2) {
+            for (int i = 0; i < catsAges.length; i++) {
+                if (catsAges[i] < 0 || catsAges[i] > 50) {
+                    System.out.println("Error");
+                } else if (catsAges[i] < 2){
                     System.out.println(catsAges[i] + " - " + " Отнеси кота на прививку!");
+                } else {
+                    System.out.println("Кот остается дома");
                 }
             }
 
@@ -236,12 +254,19 @@ public class HW7 {
 
 //        11. Распечатать “Накорми кота!” если имя кота “Рыжик” и значение isCatRed == true
 
-            for (int i=0; i < isCatRed.length; i++){
-                if (isCatRed[i] == true && catsNames[i].equals("Рыжик")){
-
+//            for (int i=0; i < isCatRed.length; i++){
+//                if (isCatRed[i] == true && catsNames[i].equals("Рыжик")){
+//
+//                }
+//                System.out.println("Накорми кота!");
+//
+//            }
+            if(catsNames.length == isCatRed.length && catsNames.length !=0 ){
+                for(int i =0; i < isCatRed.length; i++){
+                    if(isCatRed[i] == true && catsNames[i].equals("Рыжик")){
+                        System.out.println("Накорми кота, его зовут " + catsNames[i]);
+                    }
                 }
-                System.out.println("Накорми кота!");
-
             }
 
 
@@ -264,22 +289,34 @@ public class HW7 {
 
 //        13.	Распечатать возраст самого молодого кота
 
-            for (int i = 0; i < 8; i++) {
-                if (i == 0) {
-                    System.out.println("Возраст самого молодого кота = " + catsAges[i] + " год");
+//            for (int i = 0; i < 8; i++) {
+//                if (i == 0) {
+//                    System.out.println("Возраст самого молодого кота = " + catsAges[i] + " год");
+//
+//                }
+//            }
 
+            double min = catsAges[0];
+            for(int i =0; i < catsAges.length; i++){
+                if(catsAges[i] < min){
+                    min = catsAges[i];
                 }
             }
+            System.out.println("Возраст самого молодого кота = " + min + " год");
 
             printTaskNumber();
 
 //        14.	Распечатать возраст самого старого кота
+            int maxAges = Integer.MIN_VALUE;
 
-            for (int i = 0; i < 8; i++) {
-                if (i == 7) {
-                    System.out.println("Возраст самого старого кота = " + catsAges[i] + " лет");
+            for (int i = 0; i < catsAges.length; i++) {
+                if (maxAges <  catsAges[i]) {
+                    maxAges = catsAges[i];
+
                 }
             }
+            System.out.println("Возраст самого старого кота = " + maxAges + " лет");
+
             printTaskNumber();
 //        15.	Распечатать количество серых котов
             int count = 0;
@@ -292,7 +329,7 @@ public class HW7 {
                 }
 
             }
-            System.out.println(count);
+            System.out.println("Количество серых котов = " + count);
             printTaskNumber();
 
 //        16.	Распечатать имя кота, если кот находится в коробке с четным индексом и его возраст не больше 3 лет
@@ -315,8 +352,9 @@ public class HW7 {
                     evenPositiveNumber[index] = i;
                     index++;
                 }
-                System.out.println(evenPositiveNumber);
+
             }
+            System.out.println(Arrays.toString(evenPositiveNumber));
             printTaskNumber();
 
 //        18.	Написать метод, который принимает на вход массив int,
@@ -325,6 +363,8 @@ public class HW7 {
 
 
             average(catsAges);
+
+//            verifyEquals(4.5, String.valueOf(catsAges));
 
             printTaskNumber();
 
@@ -339,6 +379,7 @@ public class HW7 {
                     index1++;
                 }
             }
+            System.out.println(Arrays.toString(oddNegativeNumber));
             printTaskNumber();
 
 //        20.	Создать массив из 10 случайных положительных целых чисел
@@ -358,7 +399,7 @@ public class HW7 {
 //        и возвращает минимальное значение, максимальное значение и среднее значение всех чисел массива.
 //                Проверить работу метода на массиве из задания 20.
 
-            Array(randomArray);
+
 
             printTaskNumber();
 
