@@ -399,6 +399,10 @@ public class HW7 {
 //        и возвращает минимальное значение, максимальное значение и среднее значение всех чисел массива.
 //                Проверить работу метода на массиве из задания 20.
 
+            Array(randomArray);
+
+            System.out.println(Arrays.toString(Array(randomArray)));
+
 
 
             printTaskNumber();
