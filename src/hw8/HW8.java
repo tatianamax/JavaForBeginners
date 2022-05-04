@@ -14,7 +14,8 @@ public class HW8 {
 
     }
 
-    //    8.	Написать метод, который принимает на вход 5 чисел типа double,  и возвращает массив из этих же чисел
+    //    8.	Написать метод, который принимает на вход 5 чисел типа double,
+    //    и возвращает массив из этих же чисел
     public static double[] returnArray(double a, double b, double c, double d, double f) {
         double[] Array = {a, b, c, d, f};
 
