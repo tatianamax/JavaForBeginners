@@ -113,6 +113,104 @@ public class HW10 {
         return str.replaceAll("\\s", "");
     }
 
+//    5.	Напишите метод, который принимает на вход строку и считает,
+//
+//    сколько букв а или А содержится в строке.
+//    Test Data:
+//            “Abracadabra” → 5
+//            “Homenum Revelio” → 0
+
+    public static String CountA(String s){
+        int uppercase = 0;
+        int lowercase = 0;
+
+        if (s != null) {
+            String s1 = s.toUpperCase();
+            String s2 = s.toLowerCase();
+
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == s1.charAt(i) ^ s.charAt(i) == s2.charAt(i)) {
+                    if (s.charAt(i) == s1.charAt(i)) uppercase++;
+                    else lowercase++;
+                }
+            }
+        }
+        System.out.println(uppercase + " " + lowercase);
+
+
+        return (uppercase + " " + lowercase);
+    }
+//    6.	Напишите метод, который принимает на вход текст и проверяет,
+//    содержится ли в тексте хотя бы одно слово Java.
+    public static boolean JavaString(String s){
+//        System.out.println(s.contains("Java"));
+        return s.contains("Java");
+    }
+
+//    Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки,
+//    точку и кавычки в конце строки с помощью метода concat()
+//    Test Data:
+//            “One” → ““One.””
+//            “    TWO  “ → ““TWO.””
+    public static String StringPlus(String s){
+
+        return (("\""+s.trim().concat(".\"")));
+
+    }
+//    8.	Напишите метод, который принимает на вход название города
+//    и исправляет написание:
+//    Test Data:
+//            “ташкент” → “Ташкент”
+//            “ЧикаГО” → “Чикаго”
+
+    public static String CityUpp(String str){
+        if(str== null || str.isEmpty()) {
+            return str;
+        }
+
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+    public static String CityLow(String str){
+        if(str== null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0,4)+ str.substring(4,5).toLowerCase() + str.substring(5,6).toLowerCase();
+
+    }
+//    9.	Напишите метод, который принимает на вход строку,
+//    и возвращает все, что находится между первой и последней буквой-параметром:
+//    Test Data:
+//            “Abracadabra”, “b” → “bracadab”
+//            “Whippersnapper”, “p” → “ppersnapp”
+
+    public static String OneLastLetter(String str, String s){
+        if(str== null || str.isEmpty()) {
+            return str;
+        }
+         str = str.substring(str.indexOf(s), str.lastIndexOf(s)+1);
+
+        return str;
+
+    }
+
+//    10.	Напишите метод, который принимает на вход слово, и возвращает true,
+//    если слово начинается и заканчивается на одинаковую букву, и false иначе
+//    Test Data:
+//            “Abracadabra” → true
+//            “Whippersnapper” → false
+
+    public static boolean Letter(String l){
+//        String first = l.indexOf(l);
+//        char last = l.charAt(l.length() - 1);
+//        if(first == last){
+//           return true;
+//        }else{
+//            return false;
+//        }
+        return l.toLowerCase().charAt(0) == l.toLowerCase().charAt(l.length()-1);
+
+    }
+
 
 
 
@@ -211,6 +309,108 @@ public class HW10 {
         System.out.println(RemoveAllSpaces(st3));
 
         printTaskNumber();
+//        5.	Напишите метод, который принимает на вход строку и считает,
+//        сколько букв а или А содержится в строке.
+//                Test Data:
+//         “Abracadabra” → 5
+//         “Homenum Revelio” → 0
+        String s = "Abracadabra";
+        System.out.println(CountA(s));
+
+        printTaskNumber();
+
+//        6.	Напишите метод, который принимает на вход текст и проверяет,
+//        содержится ли в тексте хотя бы одно слово Java.
+
+        String text = "As of March 2022, Java 18 is the latest version, " +
+                "while Java 17, 11 and 8 are the current long-term support (LTS) versions. " +
+                "Oracle released the last zero-cost public update for the legacy version Java 8 LTS in January 2019 for commercial use," +
+                " although it will otherwise still support Java 8 with public updates for personal use indefinitely. " +
+                "Other vendors have begun to offer zero-cost builds of OpenJDK 8 and 11 that are still receiving security and other upgrades.";
+        System.out.println(JavaString(text));
+        line();
+        String text1 = "As a decrepit father takes delight\n" +
+                "To see his active child do deeds of youth,\n" +
+                "So I, made lame by fortune’s dearest spite,\n" +
+                "Take all my comfort of thy worth and truth.\n" +
+                "For whether beauty, birth, or wealth, or wit,\n" +
+                "Or any of these all, or all, or more,\n" +
+                "Entitled in thy parts do crownèd sit,\n" +
+                "I make my love engrafted to this store.\n" +
+                "So then I am not lame, poor, nor despised,\n" +
+                "Whilst that this shadow doth such substance give\n" +
+                "That I in thy abundance am sufficed,\n" +
+                "And by a part of all thy glory live.\n" +
+                "Look what is best, that best I wish in thee.\n" +
+                "This wish I have; then ten times happy me.\n";
+        System.out.println(JavaString(text1));
+
+        printTaskNumber();
+
+//        Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки,
+//                точку и кавычки в конце строки с помощью метода concat()
+//        Test Data:
+//           “One” → ““One.””
+//           “    TWO  “ → ““TWO.””
+//        String s4 = "\"One\"";
+        String s4 = "One";
+        System.out.println(StringPlus(s4));
+        line();
+        String s5 = "    TWO  ";
+        System.out.println(StringPlus(s5));
+
+        printTaskNumber();
+
+//        8.	Напишите метод, кторый принимает на вход название города
+//        и исправляет написание:
+//        Test Data:
+//        “ташкент” → “Ташкент”
+//        “ЧикаГО” → “Чикаго”
+        String str6 = "ташкент";
+        System.out.println(CityUpp(str6));
+        line();
+        String str7 = "ЧикаГО";
+        System.out.println(CityLow(str7));
+
+        printTaskNumber();
+
+//        9.	Напишите метод, который принимает на вход строку,
+//        и возвращает все, что находится между первой и последней буквой-параметром:
+//        Test Data:
+//        “Abracadabra”, “b” → “bracadab”
+//        “Whippersnapper”, “p” → “ppersnapp”
+
+        String v = "Abracadabra";
+        String n = "b";
+        System.out.println(OneLastLetter(v,n));
+        line();
+        String v1 = "Whippersnapper";
+        String n1 = "p";
+        System.out.println(OneLastLetter(v1,n1));
+
+        printTaskNumber();
+
+//        10.	Напишите метод, который принимает на вход слово,
+//        и возвращает true, если слово начинается и
+//        заканчивается на одинаковую букву, и faulse иначе
+//        Test Data:
+      //	“Abracadabra” → true
+      //	“Whippersnapper” → false
+
+        String l = "Abracadabra";
+        System.out.println(Letter(l));
+        line();
+        String l1 = "Whippersnapper";
+        System.out.println(Letter(l1));
+        printTaskNumber();
+
+
+
+
+
+
+
+
 
 
 
