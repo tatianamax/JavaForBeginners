@@ -1,5 +1,7 @@
 package homework;
 
+import java.util.Arrays;
+
 import static utils.Utils.line;
 import static utils.Utils.printTaskNumber;
 
@@ -211,6 +213,63 @@ public class HW10 {
 
     }
 
+//    11.	Напишите метод, который принимает на вход предложение
+//    и возвращает слова из этого предложения в виде массива слов
+//    Test Data:
+//            “QA for Everyone” → {“QA”, “for”, “Everyone”}
+//           “Александр Сергеевич Пушкин” → {“Александр”, “Сергеевич”, “Пушкин”}
+
+    public static String WordArray(String sentence){
+        String[] words = (sentence.split(" "));
+//        System.out.println(Arrays.toString(Words));
+        return Arrays.toString(words);
+    }
+
+//    12.	Написать метод, который принимает на вход предложение,
+//        состоящее из имени, фамилии, отчества и возвращает массив строк:
+//        Test Data:
+//         “Александр Сергеевич Пушкин” →
+//        {“Имя: Александр”, “Отчество: Сергеевич”, “Фамилия: Пушкин”}
+
+    public static String WordLine(String sentence){
+
+        String[] text = sentence.split(" ");
+        return "Имя:" + text[0] + ", Отчество:" + text[1] + ", Фамилия:" + text[2];
+
+    }
+//    13.	Написать метод, который возвращает сумму всех букв слова
+//
+//          “abc” → 294
+//            “ABC” → 198
+//            “123” → 0 (это не буквы)
+
+    public static int SumWords(String word){
+        int sum = 0;
+        char[] result = word.toCharArray();
+        for (int i = 0; i < result.length; i++){
+            if(!Character.isDigit(result[i])){
+                sum = sum + result[i];
+            }
+
+        }
+        return sum;
+    }
+
+//    14.	Написать метод,  который принимает на вход 2 буквы и возвращает true,
+//    если первая буква встречается раньше второй, иначе метод возвращает false
+//    method(“a”, “m”) → true
+//    method(“m”, “l”) → false
+
+    public static boolean TwoWord(String one, String two){
+        char result = one.charAt(0);
+        char result1 = two.charAt(0);
+        return result < result1;
+    }
+
+
+
+
+
 
 
 
@@ -402,7 +461,75 @@ public class HW10 {
         line();
         String l1 = "Whippersnapper";
         System.out.println(Letter(l1));
+
         printTaskNumber();
+
+//        11.	Напишите метод, который принимает на вход предложение
+//        и возвращает слова из этого предложения в виде массива слов
+//        Test Data:
+//         “QA for Everyone” → {“QA”, “for”, “Everyone”}
+//         “Александр Сергеевич Пушкин” → {“Александр”, “Сергеевич”, “Пушкин”}
+        String sentence = "QA for Everyone";
+        System.out.println(WordArray(sentence));
+        line();
+        String sentence1 = "Александр Сергеевич Пушкин";
+        System.out.println(WordArray(sentence1));
+
+        printTaskNumber();
+
+//        12.	Написать метод, который принимает на вход предложение,
+//        состоящее из имени, фамилии, отчества и возвращает массив строк:
+//        Test Data:
+//         “Александр Сергеевич Пушкин” →
+//        {“Имя: Александр”, “Отчество: Сергеевич”, “Фамилия: Пушкин”}
+
+        String sentence3 = "Александр Сергеевич Пушкин";
+        System.out.println(WordLine(sentence3));
+
+        printTaskNumber();
+
+//        13.	Написать метод, который возвращает сумму всех букв слова
+//
+//         “abc” → 294
+//         “ABC” → 198
+//         “123” → 0 (это не буквы)
+
+        String word = "abc";
+        System.out.println(SumWords(word));
+        line();
+        String word1 = "ABC";
+        System.out.println(SumWords(word1));
+        line();
+        String word3 = "123";
+        System.out.println(SumWords(word3));
+
+        printTaskNumber();
+
+//        14.	Написать метод,  который принимает на вход 2 буквы
+//        и возвращает true, если первая буква встречается раньше второй,
+//                иначе метод возвращает false
+//        method(“a”, “m”) → true
+//        method(“m”, “l”) → false
+        String one = "a";
+        String two = "m";
+        System.out.println(TwoWord(one,two));
+        line();
+        String one1 = "m";
+        String two2 = "l";
+        System.out.println(TwoWord(one1, two2));
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
